@@ -81,12 +81,6 @@ GET /api/valuation?ticker=AAPL
 
 ---
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to contribute.
-
----
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
