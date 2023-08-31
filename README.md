@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Stock Valuator is a Python web application that uses Flask to offer an API endpoint for Discounted Cash Flow (DCF) analysis. The application evaluates a given stock ticker to determine whether it's overvalued, undervalued, or fairly valued based on financial data fetched from Yahoo Finance.
+This stock valuator is a Python web application that uses Flask to offer an API endpoint for Discounted Cash Flow (DCF) analysis. The application evaluates a given stock ticker to determine whether it's overvalued, undervalued, or fairly valued based on financial data fetched from Yahoo Finance.
 
 ---
 
