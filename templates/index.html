@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Stock Valuator</title>
+  <style>
+    /* CSS for centering the entire content */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18px;
+      /* Increase the font size */
+    }
+
+    /* CSS for input and button alignment */
+    .input-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* CSS for basic styling */
+    #result {
+      margin-top: 20px;
+    }
+
+    /* CSS for loading message */
+    #loading {
+      display: none;
+      /* Initially hidden */
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Stock Valuator</h1>
+  <p>Enter a stock ticker to find out if it's overvalued or undervalued.</p>
+
+  <!-- Input for stock ticker -->
+  <input type="text" id="stockTicker" placeholder="Enter Stock Ticker">
+  <button onclick="getValuation()">Get Valuation</button>
+
+  <!-- Display the results -->
+  <div id="result"></div>
+
+  <!-- New div for the loading message -->
+  <div id="loading">Loading...</div>
+
+  <script>
+    // JavaScript function to handle the valuation
+    async function getValuation() {
+      // Fetch the value of the stock ticker from the input field
+      const stockTicker = document.getElementById("stockTicker").value;
+
+      // Show the loading message
+      document.getElementById("loading").style.display = "block";
+
+      try {
+        // Make an API call to get the valuation data
+        const response = await fetch(`/api/valuation?ticker=${stockTicker}`);
+        const data = await response.json();
+
+        // Display the valuation results
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `
+          <p>Current Price: ${data.current_price}</p>
+          <p>Valuated Price: ${data.valuated_price}</p>
+          <p>Valuation: The stock is ${data.valuation}</p>
+        `;
+      } catch (error) {
+        console.error("An error occurred:", error);
+      } finally {
+        // Hide the loading message
+        document.getElementById("loading").style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>
